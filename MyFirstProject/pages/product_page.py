@@ -7,8 +7,10 @@ class ProductPage(BasePage):
         self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BTN).click()
 
     def check_of_product(self):
-        # self.check_name_of_product("The shellcoder's handbook")
-        self.check_cost_of_product("£9.99")
+        name = self.find_element(ProductPageLocators.NAME_PRODUCT).text
+        self.check_name_of_product(name)
+        cost = self.find_element(ProductPageLocators.COST_PRODUCT).text
+        self.check_cost_of_product(cost)
 
     def check_name_of_product(self, name_product: str):
         name_product_message = self.find_element(ProductPageLocators.NAME_PRODUCT_MESSAGE).text
