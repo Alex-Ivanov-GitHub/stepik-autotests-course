@@ -17,15 +17,15 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         assert self.is_element_present(*LoginPageLocators.REGISTRATION_FORM), "Registration form is not present"
 
-    def register_user(self, email: str, pwd1: str, pwd2: str):
+    def register_new_user(self, email: str, password: str):
         self.find_element(LoginPageLocators.EMAIL_FIELD).send_keys(email)
-        self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys(pwd1)
-        self.find_element(LoginPageLocators.REPEAT_PASSWORD_FIELD).send_keys(pwd2)
+        self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys(password)
+        self.find_element(LoginPageLocators.REPEAT_PASSWORD_FIELD).send_keys(password)
         self.find_element(LoginPageLocators.REGISTER_BUTTON).click()
 
-    def login_user(self, email: str, pwd1: str):
+    def login_user(self, email: str, password: str):
         self.find_element(LoginPageLocators.EMAIL_FIELD_LOGIN).send_keys(email)
-        self.find_element(LoginPageLocators.PASSWORD_FIELD_LOGIN).send_keys(pwd1)
+        self.find_element(LoginPageLocators.PASSWORD_FIELD_LOGIN).send_keys(password)
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
 
     def go_to_password_reset_page(self):
